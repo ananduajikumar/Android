@@ -1,0 +1,37 @@
+package com.example.basewindow;
+
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+    private EditText unameText;
+    private EditText passText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        unameText = findViewById(R.id.uname1);
+        passText = findViewById(R.id.pass1);
+    }
+     public void Login(ViewCompat view){
+        String username=unameText.getText().toString();
+         String password=passText.getText().toString();
+         if(isValid(username,password)){
+             Toast.makeText(this,"login success",Toast.LENGTH_SHORT).show();
+         }
+         else {
+             Toast.makeText(this,"login fail",Toast.LENGTH_SHORT).show();
+         }
+    }
+    private boolean isValid(String u, String p){
+        return  u.equals("admin")&&p.equals("123");
+    }
+}
